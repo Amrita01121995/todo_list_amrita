@@ -31,9 +31,13 @@
                             <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                             </form>
-                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-success btn-sm">Edit</a>
+                            @if(!$task->status)
+                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    @endif
                         </td>
                     </tr>
                 @endforeach
